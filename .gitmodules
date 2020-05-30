@@ -1,0 +1,3 @@
+[submodule "modules/hterrain"]
+	path = modules/hterrain
+	url = ../godot_heightmap_module.git
