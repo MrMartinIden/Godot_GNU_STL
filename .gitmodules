@@ -1,3 +1,6 @@
 [submodule "modules/hterrain"]
 	path = modules/hterrain
 	url = ../godot_heightmap_module.git
+[submodule "modules/cross_fading_lod/entt"]
+	path = modules/cross_fading_lod/entt
+	url = ../../skypjack/entt.git
