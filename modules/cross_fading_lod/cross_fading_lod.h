@@ -65,7 +65,12 @@ public:
 
 	std::array<DirectMultiMeshInstance, 5> m_mesh_cache;
 
-	Ref<ShaderMaterial> m_material;
+	static void _bind_methods();
+
+	void set_custom_material(Ref<ShaderMaterial> p_material);
+	inline Ref<ShaderMaterial> get_custom_material() const { return m_custom_material; }
+
+	Ref<ShaderMaterial> m_custom_material;
 
 	Vector3 m_manual_viewer_pos;
 };

@@ -115,15 +115,9 @@ void CrossFadingLod::replace_nodes() {
 		return;
 	}
 
-	{
-		m_material = Ref<ShaderMaterial>(memnew(ShaderMaterial));
-		String path{ "res://shaders/terr.shader" };
-
-		Ref<Shader> shader = ResourceLoader::load(path, "");
-		if (shader.is_null()) {
-			assert(0);
-		}
-		m_material->set_shader(shader);
+	if (m_custom_material.is_null()) {
+		print_line(String{ "material must be valid!" });
+		assert(0);
 	}
 
 	m_registry.prepare<Transform>();
@@ -157,10 +151,10 @@ void CrossFadingLod::replace_nodes() {
 					DirectMultiMeshInstance &chunk = m_mesh_cache[mesh_idx];
 					chunk.set_mesh(mesh);
 					chunk.set_scenario(get_world());
-					chunk.set_material(m_material);
+					chunk.set_material(m_custom_material);
 				}
 
-				//current_scene->remove_child(node);
+				current_scene->remove_child(node);
 			}
 		}
 	}
@@ -261,4 +255,17 @@ void CrossFadingLod::_process() {
 	set_lod_by_distance(viewer_pos);
 
 	set_mesh_by_lod();
+}
+
+void CrossFadingLod::set_custom_material(Ref<ShaderMaterial> p_material) {
+	if (m_custom_material != p_material) {
+		m_custom_material = p_material;
+	}
+}
+
+void CrossFadingLod::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("get_custom_material"), &CrossFadingLod::get_custom_material);
+	ClassDB::bind_method(D_METHOD("set_custom_material", "material"), &CrossFadingLod::set_custom_material);
+
+	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "custom_material", PROPERTY_HINT_RESOURCE_TYPE, "ShaderMaterial"), "set_custom_material", "get_custom_material");
 }
