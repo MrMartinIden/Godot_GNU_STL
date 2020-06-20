@@ -157,6 +157,7 @@ void CrossFadingLod::replace_nodes() {
 					DirectMultiMeshInstance &chunk = m_mesh_cache[mesh_idx];
 					chunk.set_mesh(mesh);
 					chunk.set_scenario(get_world());
+					chunk.set_material(m_material);
 				}
 
 				//current_scene->remove_child(node);
