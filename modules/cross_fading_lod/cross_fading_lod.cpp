@@ -7,7 +7,7 @@
 #include <cassert>
 #include <utility>
 
-#include "entity_mesh.h"
+#include "entity_node.h"
 
 template <std::size_t... Is>
 constexpr auto indexSequenceReverse(std::index_sequence<Is...> const &)

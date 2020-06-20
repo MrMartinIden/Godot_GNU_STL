@@ -33,11 +33,4 @@ private:
 	EditorNode *_editor;
 	CrossFadingLod *cross_fading_lod;
 	HBoxContainer *_toolbar;
-
-	FileDialog m_import_dialog;
-	String _import_file_path;
-	ConfirmationDialog *_import_confirmation_dialog;
-	AcceptDialog *_accept_dialog;
-
-	bool _mouse_pressed;
 };

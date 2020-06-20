@@ -8,7 +8,6 @@
 
 CrossFadingLodEditorPlugin::CrossFadingLodEditorPlugin(EditorNode *p_editor) {
 	_editor = p_editor;
-	_mouse_pressed = false;
 
 	_toolbar = memnew(HBoxContainer);
 	add_control_to_container(CONTAINER_SPATIAL_EDITOR_MENU, _toolbar);
