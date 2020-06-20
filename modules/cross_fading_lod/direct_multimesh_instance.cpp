@@ -57,10 +57,10 @@ void DirectMultiMeshInstance::set_material(Ref<Material> material) {
     VS::get_singleton()->instance_geometry_set_material_override(m_multimesh_instance, material.is_valid() ? material->get_rid() : RID());
 }
 
-void DirectMultiMeshInstance::set_instance_lod(uint32_t p_instance, const uint8_t &lod) {
-  Color color{ 2.f / (1 << lod), 0, 0};
+void DirectMultiMeshInstance::set_lod_and_fade(uint32_t p_instance, const uint8_t &lod, const float &p_fade) {
+	Color color{ 2.f / (1 << lod), p_fade + 1.f, 0 };
 
-  set_instance_custom_data(p_instance, color);
+	set_instance_custom_data(p_instance, color);
 }
 
 void DirectMultiMeshInstance::set_instance_custom_data(uint32_t p_instance, const Color &p_custom_data) {

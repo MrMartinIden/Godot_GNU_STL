@@ -12,10 +12,10 @@ struct DirectMultiMeshInstance
 
     }
 
-    void set_instance_count(uint32_t p_count);
-    uint32_t get_instance_count() const {
-        return m_instance_count;
-    }
+	void set_instance_count(uint32_t p_count);
+	inline uint32_t get_instance_count() const {
+		return m_instance_count;
+	}
 
 	void set_scenario(Ref<World> world);
 
@@ -25,9 +25,9 @@ struct DirectMultiMeshInstance
 
 	void set_material(Ref<Material> material);
 
-	void set_instance_lod(uint32_t p_instance, const uint8_t &lod);
+	void set_lod_and_fade(uint32_t p_instance, const uint8_t &lod, const float &p_fade);
 
-    void set_instance_custom_data(uint32_t p_instance, const Color &p_custom_data);
+	void set_instance_custom_data(uint32_t p_instance, const Color &p_custom_data);
 
 	RID m_multimesh_instance;
 	RID m_multimesh;
